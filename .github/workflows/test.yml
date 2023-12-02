@@ -4,11 +4,22 @@ name: First Workflow
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "env/prd" branch
-  push:
-    branches: [ "env/prd" ]
-  pull_request:
-    branches: [ "env/prd" ]
+  # # Triggers the workflow on push or pull request events but only for the "env/prd" branch
+  # push:
+  #   branches: [ "env/prd" ]
+  # pull_request:
+  #   branches: [ "env/prd" ]
+  label:
+    types:
+      - created
+      - edited
+      - deleted
+  issues:
+    types:
+      - opened
+      - labeled
+      - deleted
+      - milestoned
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
