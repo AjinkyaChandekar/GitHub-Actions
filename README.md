@@ -42,5 +42,11 @@ on:
 
 Note: Once you delete workflow yaml file, that workflow will be removed from Action tab.
 
-##**Syntax:**##
-
+**3.How to refer github.event ?** (It prints all events)
+"issue": {
+    "author_association": "OWNER",
+    "body": "ABC",
+    "number": 3,
+    }
+    
+${{ github.event.issue.number }}
