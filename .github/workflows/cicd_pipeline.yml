@@ -26,6 +26,10 @@ jobs:
    #  steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform_Init
+        run: terraform init
+        
       - name: Terraform_Plan
         run: terraform plan
 
