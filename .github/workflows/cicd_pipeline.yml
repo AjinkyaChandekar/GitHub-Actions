@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Push Content
-        run: echo '${{ toJSON(github.event) }}' | jq
       - name: 'Connect to AWS Account'
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -34,6 +32,8 @@ jobs:
     needs: [ AWS_Connection, Terraform_Plan ]
     runs-on: ubuntu-latest
     steps:
+      - name: Push Content
+        run: echo '${{ toJSON(github.event) }}' | jq
       - name: Terraform_Apply
         if: github.ref == 'refs/heads/env/prd' && github.event_name == 'push'
         run: echo "Terraform_Apply"
