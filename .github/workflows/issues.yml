@@ -1,0 +1,16 @@
+name: Issues Workflow
+
+# Controls when the workflow will run
+on:
+  issues:
+    types:
+      - opened
+      - deleted
+
+jobs:
+  demo-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "dump github context"
+        run: echo '${{ toJSON(github.event) }}' | jq
+        shell: bash
