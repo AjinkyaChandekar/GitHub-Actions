@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Terraform_Plan
-        run: echo "Terraform_Plan" exit code 1
+        run: echo "Terraform_Plan
 
    Terraform_Apply:
     needs: [ AWS_Connection, Terraform_Plan ]
