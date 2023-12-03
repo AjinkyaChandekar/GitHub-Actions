@@ -5,8 +5,7 @@ on: push
    #    branches: [ "env/prd" ]
    # pull_request:
    #    branches: [ "env/prd" ]
-       
-   workflow_dispatch:
+   #workflow_dispatch:
 
 jobs:
    AWS_Connection:
