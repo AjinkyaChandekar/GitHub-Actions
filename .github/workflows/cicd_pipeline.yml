@@ -8,7 +8,7 @@ on: push
    #workflow_dispatch:
 
 jobs:
-   AWS_Connection:
+   Infra_Deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,21 +20,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-   Terraform_Plan:
-    needs: [AWS_Connection]
-    runs-on: ubuntu-latest
-    steps:
+   # Terraform_Plan:
+   #  needs: [AWS_Connection]
+   #  runs-on: ubuntu-latest
+   #  steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
       - name: Terraform_Plan
         run: terraform plan
 
-   Terraform_Apply:
-    needs: [ AWS_Connection, Terraform_Plan ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Push Content
-        run: echo '${{ toJSON(github.event) }}' | jq
+   # Terraform_Apply:
+   #  needs: [ AWS_Connection, Terraform_Plan ]
+   #  runs-on: ubuntu-latest
+   #  steps:
+      # - name: Push Content
+      #   run: echo '${{ toJSON(github.event) }}' | jq
+      
       - name: Terraform_Apply
         if: github.ref == 'refs/heads/env/prd' && github.event_name == 'push'
         run: terraform apply -auto-approve
