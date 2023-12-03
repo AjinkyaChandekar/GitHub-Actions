@@ -24,8 +24,10 @@ jobs:
     needs: [AWS_Connection]
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
       - name: Terraform_Plan
-        run: echo "Terraform_Plan"
+        run: terraform plan
 
    Terraform_Apply:
     needs: [ AWS_Connection, Terraform_Plan ]
@@ -35,4 +37,4 @@ jobs:
         run: echo '${{ toJSON(github.event) }}' | jq
       - name: Terraform_Apply
         if: github.ref == 'refs/heads/env/prd' && github.event_name == 'push'
-        run: echo "Terraform_Apply"
+        run: terraform apply -auto-approve
