@@ -1,10 +1,10 @@
 name: CI/CD Pipleline
 
 on:
-   // push:
-   //   branches: [ "env/prd" ]
-   // pull_request:
-   //   branches: [ "env/prd" ]
+   # // push:
+   # //   branches: [ "env/prd" ]
+   # // pull_request:
+   # //   branches: [ "env/prd" ]
        
    workflow_dispatch:
 
