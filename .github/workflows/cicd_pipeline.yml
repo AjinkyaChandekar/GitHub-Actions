@@ -33,7 +33,7 @@ jobs:
       - name: Terraform_Plan
         run: terraform plan
 
-   # Terraform_Apply:
+   ## Terraform_Apply:
    #  needs: [ AWS_Connection, Terraform_Plan ]
    #  runs-on: ubuntu-latest
    #  steps:
