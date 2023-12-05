@@ -1,11 +1,11 @@
 name: CI/CD Pipleline
 
-on: push
+on: #push
    # push:
    #    branches: [ "env/prd" ]
    # pull_request:
    #    branches: [ "env/prd" ]
-   #workflow_dispatch:
+   workflow_dispatch:
 
 jobs:
    Infra_Deployment:
