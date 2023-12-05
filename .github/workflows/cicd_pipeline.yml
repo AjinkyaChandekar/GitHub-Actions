@@ -1,8 +1,8 @@
 name: CI/CD Pipleline
 
-on: #push
-   # push:
-   #    branches: [ "env/prd" ]
+on:
+   push:
+      branches: [ "env/prd" ]
    # pull_request:
    #    branches: [ "env/prd" ]
    workflow_dispatch:
