@@ -1,9 +1,9 @@
 name: Create Issue on Push
 
 on:
-  push:
-    branches:
-      - env/prd  # Adjust the branch as needed
+  #push:
+  #  branches:
+  #    - env/prd  # Adjust the branch as needed
   workflow_dispatch:
 
 jobs:
