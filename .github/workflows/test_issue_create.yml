@@ -20,21 +20,21 @@
 #           env:
 #             GH_TOKEN: ${{ github.token }}
 
-name: Greeting on variable day
-
+name: Test Issue
 on:
-  workflow_dispatch
-
-env:
-  DAY_OF_WEEK: Monday
-
+  issues:
+    types:
+      - reopened
+      - opened
 jobs:
-  greeting_job:
+  label_issues:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
+    permissions:
+      issues: write
     steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
-          First_Name: Mona
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: triage
