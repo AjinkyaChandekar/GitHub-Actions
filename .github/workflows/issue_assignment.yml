@@ -1,13 +1,13 @@
 name: Issue Assignment
 
 on:
-  workflow_run:
-    workflows: ["Issues Comment"]
-    branches: [ "env/prd" ]
-    types: 
-      - completed
-  issues:
-    types: [opened]
+  # workflow_run:
+  #   workflows: ["Issues Comment"]
+  #   branches: [ "env/prd" ]
+  #   types: 
+  #     - completed
+  # issues:
+  #   types: [opened]
     
   workflow_dispatch:
 
