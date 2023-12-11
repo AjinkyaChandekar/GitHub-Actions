@@ -1,32 +1,19 @@
-name: Create Issue on Push
+name: Issues Creation
 
 on:
-  #push:
-  #  branches:
-  #    - env/prd  # Adjust the branch as needed
-  workflow_dispatch:
+   workflow_dispatch:
 
 jobs:
-  create_issue:
-    runs-on: ubuntu-latest
+ create-issue:
+ runs_on: ubuntu-latest
+ steps:
+   - name: "Dump github context"
+     run: echo '${{ toJSON(github.event }}' | jq
 
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set Up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
-
-    - name: Install GitHub CLI
-      run: |
-        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-        sudo apt-add-repository -y https://cli.github.com/packages
-        sudo apt update
-        sudo apt install gh
-
-    - name: Create Issue
-      run: |
-        echo "Creating a new issue..."
-        gh issue create -t "New Push Event" -b "A new push event has occurred."
+   - name: Create an Issue
+     uses: dacbd/create-issue-action@main
+     with:
+      token: ${{ secrets.ACCESS_TOKEN }}
+      title: <Git-Repo> <Branch-Name>
+      body: Approved
+      
