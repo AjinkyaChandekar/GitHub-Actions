@@ -15,4 +15,6 @@ jobs:
     steps:
       - name: Label Issue
         run: gh issue edit "${{ github.event.issue.number }}" --add-label "Approve for test"
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         # run: gh issue label add "${{ github.event.issue.number }}" --add-label "Approve for test"
