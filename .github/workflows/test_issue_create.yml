@@ -1,21 +1,40 @@
-name: Test Issue Creation
+# name: Test Issue Creation
+
+# on:
+#   push:
+#     branches: [ "env/prd" ]
+
+#   workflow_dispatch:
+
+# jobs:
+#    create_assign_label_issue:
+#       runs-on: ubuntu-latest
+#       steps:
+#       - name: "Dump github context"
+#         run: echo '${{ toJSON(github.event) }}' | jq
+
+#       - name: Create an Issue
+#         run: |
+#           echo "Creating the issue..."
+#           gh issue create -t '${{ github.event.repository.name }} ${{ github.event.repository.default_branch }}' -b "Approved"
+#           env:
+#             GH_TOKEN: ${{ github.token }}
+
+name: Greeting on variable day
 
 on:
-  push:
-    branches: [ "env/prd" ]
+  workflow_dispatch
 
-  workflow_dispatch:
+env:
+  DAY_OF_WEEK: Monday
 
 jobs:
-   create_assign_label_issue:
-      runs-on: ubuntu-latest
-      steps:
-      - name: "Dump github context"
-        run: echo '${{ toJSON(github.event) }}' | jq
-
-      - name: Create an Issue
-        run: |
-          echo "Creating the issue..."
-          gh issue create -t '${{ github.event.repository.name }} ${{ github.event.repository.default_branch }}' -b "Approved"
-          env:
-            GH_TOKEN: ${{ github.token }}
+  greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
