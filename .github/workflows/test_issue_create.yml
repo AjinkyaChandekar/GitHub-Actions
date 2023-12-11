@@ -6,12 +6,12 @@ on:
 
   workflow_dispatch:
 
-env:
-  GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # setting GH_TOKEN for the entire workflow
 
 jobs:
    create_assign_label_issue:
       runs-on: ubuntu-latest
+      env:
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # setting GH_TOKEN for the entire workflow
       steps:
       - name: "Dump github context"
         run: echo '${{ toJSON(github.event) }}' | jq
