@@ -1,0 +1,18 @@
+name: Issues Creation
+
+on:
+   workflow_dispatch:
+
+jobs:
+   create_issue:
+      runs_on: ubuntu-latest
+      steps:
+      - name: "Dump github context"
+        run: echo '${{ toJSON(github.event }}' | jq
+
+      - name: Create an Issue
+        uses: dacbd/create-issue-action@main
+        with:
+           token: ${{ secrets.ACCESS_TOKEN }}
+           title: <Git-Repo> <Branch-Name>
+           body: Approved
