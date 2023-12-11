@@ -17,4 +17,4 @@ jobs:
       issues: write
     steps:
       - name: Label Issue
-        run: gh issue edit ${{ github.event.issue.number }} --add-label "Approve for test"
+        run: gh issue edit 25 --add-label "Approve for test"
