@@ -8,7 +8,7 @@ jobs:
       runs_on: ubuntu-latest
       steps:
       - name: "Dump github context"
-        run: echo '${{ toJSON(github.event }}' | jq
+        run: echo '${{ toJSON(github.event) }}' | jq
 
       - name: Create an Issue
         uses: dacbd/create-issue-action@main
