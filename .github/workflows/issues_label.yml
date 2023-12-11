@@ -1,14 +1,14 @@
 name: Label Issues
 
 on:
-  issues:
-    types:
-      - opened
-  workflow_run:
-    workflows: ["Issues Creation"]
-    branches: [ "env/prd" ]
-    types: 
-      - completed
+  # issues:
+  #   types:
+  #     - opened
+  # workflow_run:
+  #   workflows: ["Issues Creation"]
+  #   branches: [ "env/prd" ]
+  #   types: 
+  #     - completed
 
 jobs:
   label_issues:
