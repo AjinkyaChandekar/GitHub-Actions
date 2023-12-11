@@ -2,16 +2,16 @@ name: Issues Comment
 
 # Controls when the workflow will run
 on:
-  workflow_run:
-    workflows: ["Issues Creation"]
-    branches: [ "env/prd" ]
-    types: 
-      - completed
+  # workflow_run:
+  #   workflows: ["Issues Creation"]
+  #   branches: [ "env/prd" ]
+  #   types: 
+  #     - completed
       
-  issues:
-    types:
-      - opened
-      - deleted
+  # issues:
+  #   types:
+  #     - opened
+  #     - deleted
 
   workflow_dispatch:
 
