@@ -5,8 +5,8 @@ on:
 
 jobs:
  create-issue:
- runs_on: ubuntu-latest
- steps:
+  runs_on: ubuntu-latest
+  steps:
    - name: "Dump github context"
      run: echo '${{ toJSON(github.event }}' | jq
 
