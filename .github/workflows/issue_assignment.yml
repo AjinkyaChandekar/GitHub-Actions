@@ -2,7 +2,7 @@ name: Issue Assignment
 
 on:
   workflow_run:
-    workflows: ["Issues Creation"]
+    workflows: ["Issues Comment"]
     branches: [ "env/prd" ]
     types: 
       - completed
