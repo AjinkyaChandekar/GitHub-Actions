@@ -17,5 +17,5 @@ jobs:
         uses: dacbd/create-issue-action@main
         with:
            token: ${{ secrets.ACCESS_TOKEN }}
-           title: <Git-Repo2> <Branch-Name>
+           title: ${{ github.event.repository.name }} ${{ github.event.repository.default_branch }}
            body: Approved
