@@ -1,6 +1,11 @@
 name: Issue Assignment
 
 on:
+  workflow_run:
+    workflows: ["Issues Creation"]
+    branches: [ "env/prd" ]
+    types: 
+      - completed
   issues:
     types: [opened]
     
