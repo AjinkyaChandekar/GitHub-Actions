@@ -18,4 +18,4 @@ jobs:
           echo "Creating the issue..."
           gh issue create -t '${{ github.event.repository.name }} ${{ github.event.repository.default_branch }}' -b "Approved"
           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GH_TOKEN: ${{ github.token }}
