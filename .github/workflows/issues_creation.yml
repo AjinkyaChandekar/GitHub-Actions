@@ -1,8 +1,8 @@
 name: Issues Creation
 
 on:
-   # push:
-   #    branches: [ "env/prd" ]
+   push:
+      branches: [ "env/prd" ]
       
    workflow_dispatch:
 
