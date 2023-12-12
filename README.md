@@ -1,4 +1,4 @@
-# GitHub-Actions
+## GitHub-Actions
 Notes: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 ###########**SYNTAX**###########
 **ON**
