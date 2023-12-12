@@ -9,6 +9,7 @@ on:
   #   branches: [ "env/prd" ]
   #   types: 
   #     - completed
+  workflow_dispatch:
 
 jobs:
   label_issues:
