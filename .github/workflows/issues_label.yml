@@ -1,10 +1,22 @@
 name: Label and Comment issues
+
 on:
   issues:
     types:
       - opened
+      
 jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Auto-assign issue'
+        uses: pozil/auto-assign-issue@v1
+        with:
+          repo-token: ${{ secrets.ACCESS_TOKEN }}
+          assignees: AjinkyaChandekar
+
   label_comment_issues:
+    needs: [auto-assign]
     runs-on: ubuntu-latest
     permissions:
       issues: write
