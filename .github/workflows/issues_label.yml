@@ -26,7 +26,7 @@ jobs:
       NUMBER: ${{ github.event.issue.number }}
     steps:
       - name: Assign Label "Approve for test"
-        run: gh issue edit "$NUMBER" --add-label "$LABELS_01"
+        run: gh issue edit "$NUMBER" --add-label $LABELS_01
         env:
           LABELS_01: Approve for test
       - name: Comment issue "Approved"
@@ -34,8 +34,8 @@ jobs:
           
       - name: Assign Label "Sign Off Test"
         run: |
-          gh issue edit "$NUMBER" --remove-label "$LABELS_01"
-          gh issue edit "$NUMBER" --add-label "$LABELS_02"
+          gh issue edit "$NUMBER" --remove-label $LABELS_01
+          gh issue edit "$NUMBER" --add-label $LABELS_02
         env:
           LABELS_02: Sign Off Test
       - name: Comment Issue "Validated"
@@ -43,8 +43,8 @@ jobs:
         
       - name: Assign Label "Approve for PROD"
         run: |
-          gh issue edit "$NUMBER" --remove-label "$LABELS_02"
-          gh issue edit "$NUMBER" --add-label "$LABELS_03"
+          gh issue edit "$NUMBER" --remove-label $LABELS_02
+          gh issue edit "$NUMBER" --add-label $LABELS_03
         env:
           LABELS_03: Approve for PROD
       - name: Comment Issue "Approved"
