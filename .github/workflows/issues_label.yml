@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     steps:
       - run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
