@@ -33,14 +33,18 @@ jobs:
         run: gh issue comment "$NUMBER" --body "Approved"
           
       - name: Assign Label "Sign Off Test"
-        run: gh issue edit "$NUMBER" --remove-label "$LABELS_01" --add-label "$LABELS_02"
+        run: |
+          gh issue edit "$NUMBER" --remove-label "$LABELS_01"
+          gh issue edit "$NUMBER" --add-label "$LABELS_02"
         env:
           LABELS_02: Sign Off Test
       - name: Comment Issue "Validated"
         run: gh issue comment "$NUMBER" --body "Validated"
         
       - name: Assign Label "Approve for PROD"
-        run: gh issue edit "$NUMBER" --remove-label "$LABELS_02"  --add-label "$LABELS_03"
+        run: |
+          gh issue edit "$NUMBER" --remove-label "$LABELS_02"
+          gh issue edit "$NUMBER" --add-label "$LABELS_03"
         env:
           LABELS_03: Approve for PROD
       - name: Comment Issue "Approved"
