@@ -10,25 +10,27 @@ jobs:
       issues: write
     env:
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NUMBER: ${{ github.event.issue.number }}
     steps:
       - run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
+          # GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # GH_REPO: ${{ github.repository }}
+          # NUMBER: ${{ github.event.issue.number }}
           LABELS: Approve for test
       - run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
+          # GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # GH_REPO: ${{ github.repository }}
+          # NUMBER: ${{ github.event.issue.number }}
           LABELS: Sign Off Test
       - run: gh issue comment "$NUMBER" --body "Validated"
       - run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
+          # GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # GH_REPO: ${{ github.repository }}
+          # NUMBER: ${{ github.event.issue.number }}
           LABELS: Approve for PROD
       - run: gh issue comment "$NUMBER" --body "Approved"
       
