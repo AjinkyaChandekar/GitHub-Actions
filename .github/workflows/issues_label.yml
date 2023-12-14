@@ -32,7 +32,7 @@ jobs:
         env:
           LABELS: Approve for PROD
       - name: Comment Issue "Approved"
-      - run: gh issue comment "$NUMBER" --body "Approved"
+        run: gh issue comment "$NUMBER" --body "Approved"
       
       
 # name: Label Issues
