@@ -6,8 +6,8 @@ on:
   #   branches: [ "env/prd" ]
   #   types: 
   #     - completed
-  issues:
-    types: [opened]
+  # issues:
+  #   types: [opened]
     
   workflow_dispatch:
 
