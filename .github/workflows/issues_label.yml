@@ -1,10 +1,10 @@
-name: Label issues
+name: Label and Comment issues
 on:
   issues:
     types:
       - opened
 jobs:
-  label_issues:
+  label_comment_issues:
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -15,7 +15,22 @@ jobs:
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           LABELS: Approve for test
-          
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: Sign Off Test
+      - run: gh issue comment "$NUMBER" --body "Validated"
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: Approve for PROD
+      - run: gh issue comment "$NUMBER" --body "Approved"
+      
+      
 # name: Label Issues
 
 # on:
