@@ -24,29 +24,32 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       GH_REPO: ${{ github.repository }}
       NUMBER: ${{ github.event.issue.number }}
+      LABELS_01: Approve for test
+      LABELS_02: Sign Off Test
+      LABELS_03: Approve for PROD
     steps:
       - name: Assign Label "Approve for test"
-        run: gh issue edit "$NUMBER" --add-label $LABELS_01
-        env:
-          LABELS_01: Approve for test
+        run: gh issue edit "$NUMBER" --add-label "$LABELS_01"
+        # env:
+        #   LABELS_01: Approve for test
       - name: Comment issue "Approved"
         run: gh issue comment "$NUMBER" --body "Approved"
           
       - name: Assign Label "Sign Off Test"
         run: |
-          gh issue edit "$NUMBER" --remove-label $LABELS_01
-          gh issue edit "$NUMBER" --add-label $LABELS_02
-        env:
-          LABELS_02: Sign Off Test
+          gh issue edit "$NUMBER" --remove-label "$LABELS_01"
+          gh issue edit "$NUMBER" --add-label "$LABELS_02"
+        # env:
+        #   LABELS_02: Sign Off Test
       - name: Comment Issue "Validated"
         run: gh issue comment "$NUMBER" --body "Validated"
         
       - name: Assign Label "Approve for PROD"
         run: |
-          gh issue edit "$NUMBER" --remove-label $LABELS_02
-          gh issue edit "$NUMBER" --add-label $LABELS_03
-        env:
-          LABELS_03: Approve for PROD
+          gh issue edit "$NUMBER" --remove-label "$LABELS_02"
+          gh issue edit "$NUMBER" --add-label "$LABELS_03"
+        # env:
+        #   LABELS_03: Approve for PROD
       - name: Comment Issue "Approved"
         run: gh issue comment "$NUMBER" --body "Approved"
       
